@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrapyard Details | ScrapLux</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .detail-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .detail-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .detail-content {
+            padding: 60px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .info-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .info-box p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-box i {
+            width: 25px;
+            color: var(--secondary-color);
+        }
+        .parts-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .part-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--light-gray);
+        }
+        .part-item h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .part-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .contact-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><i class="fas fa-gem"></i><span>Scrap<span class="lux">Lux</span></span></a><span class="tagline-nav">Luxury Parts, Found Faster</span></div>
+            <div class="nav-menu"><ul><li><a href="index.html">Home</a></li><li><a href="scrapyards.html" class="active">Scrapyards</a></li><li><a href="parts.html">Luxury Parts</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="nav-actions"><a href="list-scrapyard.html" class="btn-outline">List Your Scrapyard</a><a href="contact.html" class="btn-primary">Get Started</a><div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div></div>
+        </div>
+    </nav>
+
+    <div class="detail-header" id="detailHeader">
+        <div class="container">
+            <a href="scrapyards.html" class="back-link" style="color: var(--secondary-color); display: inline-block; margin-bottom: 20px;">← Back to Scrapyards</a>
+            <h1 id="scrapyardName">Loading...</h1>
+            <p id="scrapyardLocation"></p>
+        </div>
+    </div>
+
+    <div class="container detail-content">
+        <div class="info-grid">
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> Contact Information</h3>
+                <p id="contactInfo"><i class="fas fa-phone"></i> Loading...</p>
+                <p id="addressInfo"><i class="fas fa-map-marker-alt"></i> Loading...</p>
+                <p id="hoursInfo"><i class="fas fa-clock"></i> Loading...</p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-cog"></i> Services</h3>
+                <div id="servicesList"></div>
+            </div>
+        </div>
+
+        <h2 style="font-size: 32px; margin-bottom: 20px;">Available Luxury Parts</h2>
+        <div id="partsList" class="parts-list"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-content"><div class="footer-section"><h3><i class="fas fa-gem"></i> ScrapLux</h3><p>"Luxury Parts, Found Faster"</p></div><div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="scrapyards.html">Scrapyards</a></li><li><a href="parts.html">Luxury Parts</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 ScrapLux. All rights reserved.</p></div></div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                if (navMenu.style.display === 'flex') navMenu.style.display = 'none';
+                else navMenu.style.display = 'flex';
+            });
+        }
+
+        // Scrapyard data
+        const scrapyardData = {
+            copart: {
+                name: "Copart",
+                location: "United States (Nationwide)",
+                phone: "+1 (800) 123-4567",
+                email: "info@copart.com",
+                address: "14185 Dallas Parkway, Suite 300, Dallas, TX 75254",
+                hours: "Online Auction: 24/7",
+                services: ["Online Vehicle Auctions", "Global Shipping", "Vehicle Inspections", "Buyer Support"],
+                parts: [
+                    { name: "Mercedes S-Class Engine", brand: "Mercedes-Benz", price: "950 BHD - 1700 BHD", condition: "Good" },
+                    { name: "BMW M3 Transmission", brand: "BMW", price: "680 BHD - 1200 BHD ", condition: "Very Good" },
+                    { name: "Audi R8 Headlight", brand: "Audi", price: "300 BHD - 560 BHD", condition: "Excellent" },
+                    { name: "Ferrari 488 Bumper", brand: "Ferrari", price: "1100 BHD - 1900 BHD", condition: "Good" }
+                ]
+            },
+            sharjah: {
+                name: "Sharjah Scrapyard Zone",
+                location: "Sharjah, UAE (Industrial Area 6)",
+                phone: "+971 6 123 4567",
+                email: "info@sharjahscrap.ae",
+                address: "Industrial Area 6, Sharjah, United Arab Emirates",
+                hours: "Saturday - Thursday: 8 AM - 8 PM",
+                services: ["Used Luxury Parts", "Export Services", "GCC Wide Shipping", "Quality Inspection"],
+                parts: [
+                    { name: "Rolls-Royce Phantom Door", brand: "Rolls-Royce", price: "800 BHD - 1500 BHD", condition: "Excellent" },
+                    { name: "Bentley Continental GT Engine", brand: "Bentley", price: "1500 BHD - 2500 BHD", condition: "Good" },
+                    { name: "Lamborghini Huracan Bumper", brand: "Lamborghini", price: "5000 BHD - 1000 BHD", condition: "Very Good" }
+                ]
+            },
+            uk: {
+                name: "UK Breakers Network",
+                location: "United Kingdom (Nationwide)",
+                phone: "+44 20 1234 5678",
+                email: "info@ukbreakers.co.uk",
+                address: "Multiple locations across UK",
+                hours: "Monday - Friday: 9 AM - 6 PM",
+                services: ["European Luxury Parts", "Nationwide Delivery", "Parts Warranty", "Expert Advice"],
+                parts: [
+                    { name: "Aston Martin DB11 Engine", brand: "Aston Martin", price: "1750 BHD - 3070 BHD", condition: "Good" },
+                    { name: "Range Rover Sport Bumper", brand: "Land Rover", price: "170 BHD - 350 BHD", condition: "Very Good" },
+                    { name: "Jaguar F-Type Headlight", brand: "Jaguar", price: "130 BHD - 260 BHD", condition: "Excellent" }
+                ]
+            }
+        };
+
+        // Get ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const data = scrapyardData[id] || scrapyardData.copart;
+
+        // Update page with data
+        document.getElementById('scrapyardName').textContent = data.name;
+        document.getElementById('scrapyardLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${data.location}`;
+        document.getElementById('contactInfo').innerHTML = `<i class="fas fa-phone"></i> ${data.phone}`;
+        document.getElementById('addressInfo').innerHTML = `<i class="fas fa-building"></i> ${data.address}`;
+        document.getElementById('hoursInfo').innerHTML = `<i class="fas fa-clock"></i> ${data.hours}`;
+        
+        const servicesDiv = document.getElementById('servicesList');
+        servicesDiv.innerHTML = data.services.map(s => `<p><i class="fas fa-check-circle"></i> ${s}</p>`).join('');
+        
+        const partsDiv = document.getElementById('partsList');
+        partsDiv.innerHTML = data.parts.map(p => `
+            <div class="part-item">
+                <h4>${p.name}</h4>
+                <p><i class="fas fa-car"></i> ${p.brand}</p>
+                <p><i class="fas fa-clipboard-check"></i> Condition: ${p.condition}</p>
+                <div class="part-price">💰 ${p.price}</div>
+                <a href="contact.html" class="contact-btn"><i class="fas fa-envelope"></i> Contact for Details</a>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>

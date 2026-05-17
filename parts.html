@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Car Parts | ScrapLux</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .filters {
+            background: var(--light);
+            padding: 30px 0;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .filter-select {
+            padding: 12px 25px;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            cursor: pointer;
+        }
+        .results-count {
+            text-align: center;
+            margin: 20px 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        .parts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px 0 60px;
+        }
+        .part-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .part-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .part-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+        .part-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .part-card:hover .part-img {
+            transform: scale(1.05);
+        }
+        .condition-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+        }
+        .condition-excellent { background: #10b981; }
+        .condition-verygood { background: #3b82f6; }
+        .condition-good { background: #f59e0b; }
+        .part-body {
+            padding: 20px;
+        }
+        .part-body h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+        .part-model {
+            font-size: 13px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .part-meta {
+            color: var(--gray);
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        .part-meta i {
+            width: 18px;
+            color: var(--secondary-color);
+        }
+        .part-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin: 12px 0;
+            font-size: 18px;
+        }
+        .part-btn {
+            display: inline-block;
+            padding: 10px;
+            background: var(--secondary-color);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .part-btn:hover {
+            background: var(--secondary-dark);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .filters { flex-direction: column; align-items: stretch; padding: 20px; }
+            .filter-select { width: 100%; }
+            .parts-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><i class="fas fa-gem"></i><span>Scrap<span class="lux">Lux</span></span></a><span class="tagline-nav">Luxury Parts, Found Faster</span></div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="scrapyards.html">Scrapyards</a></li>
+                    <li><a href="parts.html" class="active">Luxury Parts</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="list-scrapyard.html" class="btn-outline">List Your Scrapyard</a>
+                <a href="contact.html" class="btn-primary">Get Started</a>
+                <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Luxury Car Parts</h1>
+            <p>Find rare and premium parts for exotic vehicles from USA, UAE, and UK</p>
+        </div>
+    </section>
+
+    <div class="filters">
+        <select id="brandFilter" class="filter-select">
+            <option value="all">All Luxury Brands</option>
+            <option value="Mercedes">Mercedes-Benz</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+            <option value="Bentley">Bentley</option>
+            <option value="Rolls-Royce">Rolls-Royce</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Lamborghini">Lamborghini</option>
+            <option value="Porsche">Porsche</option>
+            <option value="Aston Martin">Aston Martin</option>
+            <option value="Maserati">Maserati</option>
+        </select>
+        <select id="typeFilter" class="filter-select">
+            <option value="all">All Parts</option>
+            <option value="Engine">Engine</option>
+            <option value="Transmission">Transmission</option>
+            <option value="Bumper">Bumper</option>
+            <option value="Headlight">Headlight</option>
+            <option value="Door">Door</option>
+            <option value="Brake">Brake</option>
+        </select>
+        <select id="conditionFilter" class="filter-select">
+            <option value="all">All Conditions</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Good">Good</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div id="resultsCount" class="results-count"></div>
+        <div id="partsContainer" class="parts-container"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h3><i class="fas fa-gem"></i> ScrapLux</h3><p>"Luxury Parts, Found Faster"</p></div>
+                <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="scrapyards.html">Scrapyards</a></li><li><a href="parts.html">Luxury Parts</a></li></ul></div>
+                <div class="footer-section"><h4>Contact</h4><p><i class="fas fa-envelope"></i> info@scraplux.com</p><p><i class="fas fa-map-marker-alt"></i> Bahrain</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 ScrapLux. All rights reserved. | Luxury Parts, Found Faster</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                if (navMenu.style.display === 'flex') navMenu.style.display = 'none';
+                else navMenu.style.display = 'flex';
+            });
+        }
+
+        // ========================================
+        // LUXURY CAR PARTS DATABASE WITH LOCAL IMAGES
+        // ========================================
+        const partsDatabase = [
+    // MERCEDES-BENZ Parts (7 parts)
+    { id: 1, name: "M177 V8 Biturbo Engine", brand: "Mercedes", model: "C63/E63/GT63 AMG", type: "Engine", price: "3,195 - 5,640 BHD", location: "USA", condition: "Excellent", year: "2018+", image: "images/M177.jpg", partNo: "M177DE40" },
+    { id: 2, name: "M156 Engine", brand: "Mercedes", model: "C63 AMG (W204)", type: "Engine", price: "1,690 - 3,010 BHD", location: "USA", condition: "Very Good", year: "2007-2014", image: "images/M156.jpg", partNo: "M156" },
+    { id: 3, name: "9G-Tronic Transmission", brand: "Mercedes", model: "S-Class, E-Class, GLE", type: "Transmission", price: "940 - 1,690 BHD", location: "UAE", condition: "Excellent", year: "2016+", image: "images/9G-Tronic.jpg", partNo: "9G-TRONIC" },
+    { id: 4, name: "S-Class Multibeam Headlight", brand: "Mercedes", model: "S-Class (W222)", type: "Headlight", price: "300 - 565 BHD", location: "UK", condition: "Excellent", year: "2013-2020", image: "images/S-Class-Headlight.jpg", partNo: "A222906" },
+    { id: 5, name: "G-Wagon AMG Bumper", brand: "Mercedes", model: "G-Class (W463)", type: "Bumper", price: "450 - 830 BHD", location: "UAE", condition: "Good", year: "2010-2018", image: "images/G-Wagon-Bumper.jpg", partNo: "G463-BMP" },
+    { id: 6, name: "AMG Carbon Ceramic Brakes", brand: "Mercedes", model: "AMG GT, E63, C63", type: "Brake", price: "1,315 - 2,255 BHD", location: "USA", condition: "Very Good", year: "2015+", image: "images/AMG-Brakes.jpg", partNo: "AMG-CCB" },
+    
+    // BMW Parts (6 parts)
+    { id: 7, name: "S55 Twin-Power Engine", brand: "BMW", model: "M3 F80, M4 F82", type: "Engine", price: "2,070 - 3,385 BHD", location: "USA", condition: "Excellent", year: "2014-2019", image: "images/BMW-S55.jpg", partNo: "S55B30" },
+    { id: 8, name: "N63 Twin-Turbo V8", brand: "BMW", model: "M550i, 750i, X5 M50i", type: "Engine", price: "1,505 - 2,635 BHD", location: "USA", condition: "Very Good", year: "2013-2019", image: "images/BMW-N63.jpg", partNo: "N63B44" },
+    { id: 9, name: "ZF 8-Speed Transmission", brand: "BMW", model: "3 Series, 5 Series, X5", type: "Transmission", price: "675 - 1,205 BHD", location: "UK", condition: "Excellent", year: "2010+", image: "images/BMW-ZF8.jpg", partNo: "8HP" },
+    { id: 10, name: "X7 Laser Headlight", brand: "BMW", model: "X7 G07", type: "Headlight", price: "450 - 750 BHD", location: "UAE", condition: "Excellent", year: "2019+", image: "images/BMW-X7-Light.jpg", partNo: "LASER-X7" },
+    { id: 11, name: "M4 Carbon Roof", brand: "BMW", model: "M4 F82", type: "Interior", price: "565 - 940 BHD", location: "USA", condition: "Excellent", year: "2014-2020", image: "images/BMW-M4-Roof.jpg", partNo: "CFRP-Roof" },
+    
+    // AUDI Parts (5 parts)
+    { id: 12, name: "2.5 TFSI 5-Cylinder Engine", brand: "Audi", model: "RS3, TT RS", type: "Engine", price: "1,690 - 2,820 BHD", location: "USA", condition: "Excellent", year: "2017+", image: "images/Audi-25TFSI.jpg", partNo: "EA855" },
+    { id: 13, name: "4.0 TFSI V8", brand: "Audi", model: "RS6, RS7, S8", type: "Engine", price: "2,255 - 3,760 BHD", location: "USA", condition: "Good", year: "2013-2018", image: "images/Audi-40TFSI.jpg", partNo: "EA825" },
+    { id: 14, name: "R8 V10 Plus Engine", brand: "Audi", model: "R8 Type 4S", type: "Engine", price: "5,640 - 9,400 BHD", location: "UAE", condition: "Excellent", year: "2015-2023", image: "images/Audi-R8-V10.jpg", partNo: "V10-5.2" },
+    { id: 15, name: "RS7 Carbon Ceramic Brakes", brand: "Audi", model: "RS7", type: "Brake", price: "1,505 - 2,445 BHD", location: "UAE", condition: "Very Good", year: "2014-2018", image: "images/Audi-RS7-Brakes.jpg", partNo: "RS7-CCB" },
+    
+    // BENTLEY Parts (4 parts)
+    { id: 16, name: "6.0 W12 Engine", brand: "Bentley", model: "Continental GT", type: "Engine", price: "5,640 - 9,400 BHD", location: "USA", condition: "Excellent", year: "2013-2018", image: "images/Bentley-W12.jpg", partNo: "W12" },
+    { id: 17, name: "Continental GT Bumper", brand: "Bentley", model: "Continental GT", type: "Bumper", price: "940 - 1,505 BHD", location: "USA", condition: "Good", year: "2012-2018", image: "images/Bentley-CGT-Bumper.jpg", partNo: "CGT-BMP" },
+    { id: 18, name: "Bentayga Air Suspension", brand: "Bentley", model: "Bentayga", type: "Suspension", price: "940 - 1,505 BHD", location: "UAE", condition: "Excellent", year: "2016+", image: "images/Bentley-Suspension.jpg", partNo: "Bentayga-Susp" },
+    
+    // ROLLS-ROYCE Parts (4 parts)
+    { id: 19, name: "6.75 V12 Engine", brand: "Rolls-Royce", model: "Phantom VIII", type: "Engine", price: "7,520 - 13,160 BHD", location: "USA", condition: "Excellent", year: "2017-2022", image: "images/Rolls-Royce-V12.jpg", partNo: "N74B68" },
+    { id: 20, name: "Cullinan Laser Headlight", brand: "Rolls-Royce", model: "Cullinan", type: "Headlight", price: "940 - 1,505 BHD", location: "UAE", condition: "Excellent", year: "2018+", image: "images/Rolls-Cullinan-Light.jpg", partNo: "CULLI-LIGHT" },
+    { id: 21, name: "Phantom Door", brand: "Rolls-Royce", model: "Phantom", type: "Door", price: "1,880 - 3,195 BHD", location: "UK", condition: "Very Good", year: "2017-2022", image: "images/Rolls-Phantom-Door.jpg", partNo: "PHANTOM-DOOR" },
+    
+    // FERRARI Parts (4 parts)
+    { id: 22, name: "F154 V8 Twin-Turbo", brand: "Ferrari", model: "488 GTB, F8", type: "Engine", price: "9,400 - 15,040 BHD", location: "USA", condition: "Excellent", year: "2015-2022", image: "images/Ferrari-F154.jpg", partNo: "F154CB" },
+    { id: 23, name: "488 GTB Carbon Bumper", brand: "Ferrari", model: "488 GTB", type: "Bumper", price: "1,315 - 2,255 BHD", location: "UAE", condition: "Excellent", year: "2015-2019", image: "images/Ferrari-488-Bumper.jpg", partNo: "F488-CARBON" },
+    { id: 24, name: "Ferrari Racing Seats", brand: "Ferrari", model: "812, F12", type: "Interior", price: "1,505 - 2,635 BHD", location: "UK", condition: "Very Good", year: "2013-2019", image: "images/Ferrari-Seats.jpg", partNo: "FERRARI-SEAT" },
+    
+    // LAMBORGHINI Parts (4 parts)
+    { id: 25, name: "5.2 V10 Engine", brand: "Lamborghini", model: "Huracan", type: "Engine", price: "8,270 - 13,160 BHD", location: "USA", condition: "Excellent", year: "2014-2023", image: "images/Lambo-V10.jpg", partNo: "V10-DA" },
+    { id: 26, name: "6.5 V12 Engine", brand: "Lamborghini", model: "Aventador", type: "Engine", price: "15,040 - 22,560 BHD", location: "UAE", condition: "Excellent", year: "2011-2022", image: "images/Lambo-V12.jpg", partNo: "L539" },
+    { id: 27, name: "Urus Carbon Bumper", brand: "Lamborghini", model: "Urus", type: "Bumper", price: "940 - 1,690 BHD", location: "UAE", condition: "Good", year: "2018+", image: "images/Lambo-Urus-Bumper.jpg", partNo: "URUS-BMP" },
+    
+    // PORSCHE Parts (4 parts)
+    { id: 28, name: "9A2 Flat-6 Engine", brand: "Porsche", model: "911 992", type: "Engine", price: "3,010 - 5,640 BHD", location: "USA", condition: "Excellent", year: "2019+", image: "images/Porsche-9A2.jpg", partNo: "9A2B6" },
+    { id: 29, name: "PDK Transmission", brand: "Porsche", model: "911, Panamera", type: "Transmission", price: "1,315 - 2,255 BHD", location: "UK", condition: "Very Good", year: "2010+", image: "images/Porsche-PDK.jpg", partNo: "PDK" },
+    { id: 30, name: "Cayenne Turbo Bumper", brand: "Porsche", model: "Cayenne Turbo", type: "Bumper", price: "565 - 940 BHD", location: "UAE", condition: "Excellent", year: "2018-2023", image: "images/Porsche-Cayenne-Bumper.jpg", partNo: "CAYENNE-BMP" }
+];
+        const brandFilter = document.getElementById('brandFilter');
+        const typeFilter = document.getElementById('typeFilter');
+        const conditionFilter = document.getElementById('conditionFilter');
+        const container = document.getElementById('partsContainer');
+        const resultsCount = document.getElementById('resultsCount');
+
+        function getConditionClass(condition) {
+            if (condition === 'Excellent') return 'condition-excellent';
+            if (condition === 'Very Good') return 'condition-verygood';
+            return 'condition-good';
+        }
+
+        function renderParts() {
+            let filtered = [...partsDatabase];
+            if (brandFilter.value !== 'all') filtered = filtered.filter(p => p.brand === brandFilter.value);
+            if (typeFilter.value !== 'all') filtered = filtered.filter(p => p.type === typeFilter.value);
+            if (conditionFilter.value !== 'all') filtered = filtered.filter(p => p.condition === conditionFilter.value);
+
+            resultsCount.innerHTML = `Found ${filtered.length} luxury parts available`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px;"><i class="fas fa-search" style="font-size:48px; color:var(--gray);"></i><h3>No parts found</h3><p>Try different filters</p></div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(p => `
+                <div class="part-card">
+                    <div class="part-image-container">
+                        <img src="${p.image}" alt="${p.name}" class="part-img" onerror="this.src='https://placehold.co/600x400/1a1a2e/d4af37?text=${p.name.replace(/ /g, '+')}'">
+                        <span class="condition-badge ${getConditionClass(p.condition)}">✦ ${p.condition}</span>
+                    </div>
+                    <div class="part-body">
+                        <h3>${p.name}</h3>
+                        <div class="part-model">${p.brand} ${p.model}</div>
+                        <div class="part-meta"><i class="fas fa-barcode"></i> Part #: ${p.partNo}</div>
+                        <div class="part-meta"><i class="fas fa-calendar"></i> Year: ${p.year}</div>
+                        <div class="part-meta"><i class="fas fa-map-marker-alt"></i> ${p.location}</div>
+                        <div class="part-meta"><i class="fas fa-cogs"></i> ${p.type}</div>
+                        <div class="part-price">💰 ${p.price}</div>
+                        <a href="contact.html" class="part-btn"><i class="fas fa-envelope"></i> Inquire Now</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        brandFilter.addEventListener('change', renderParts);
+        typeFilter.addEventListener('change', renderParts);
+        conditionFilter.addEventListener('change', renderParts);
+        renderParts();
+    </script>
+</body>
+</html>

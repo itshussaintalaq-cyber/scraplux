@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScrapLux - Luxury Parts, Found Faster | Premium Car Scrap Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-gem"></i>
+                    <span>Scrap<span class="lux">Lux</span></span>
+                </a>
+                <span class="tagline-nav">Luxury Parts, Found Faster</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="scrapyards.html">Scrapyards</a></li>
+                    <li><a href="parts.html">Luxury Parts</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="list-scrapyard.html" class="btn-outline">List Your Scrapyard</a>
+                <a href="contact.html" class="btn-primary">Get Started</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">Premium Luxury Parts</span>
+                <h1>Find Rare <span class="highlight">Luxury Car</span> Parts Faster</h1>
+                <p>ScrapLux connects you with specialized scrapyards for Mercedes, BMW, Audi, Bentley, Rolls-Royce, Ferrari, and Lamborghini across USA, Dubai, and UK.</p>
+                
+                <div class="search-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-car"></i>
+                        <input type="text" id="brandSearch" placeholder="Luxury brand (Mercedes, BMW, Ferrari)...">
+                    </div>
+                    <div class="search-input-group">
+                        <i class="fas fa-cogs"></i>
+                        <input type="text" id="partSearch" placeholder="Part type (engine, bumper, headlight)...">
+                    </div>
+                    <button class="btn-search" id="searchBtn"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="popular-searches">
+                    <span>Popular:</span>
+                    <a href="#" data-brand="Mercedes S-Class">Mercedes S-Class Parts</a>
+                    <a href="#" data-brand="BMW M3">BMW M3 Engine</a>
+                    <a href="#" data-brand="Ferrari 488">Ferrari 488 Bumper</a>
+                    <a href="#" data-brand="Rolls-Royce">Rolls-Royce Parts</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-warehouse"></i>
+                    <h3><span class="counter" data-target="3">0</span></h3>
+                    <p>Global Scrapyards</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-car"></i>
+                    <h3><span class="counter" data-target="15">0</span>+</h3>
+                    <p>Premium Brands</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3><span class="counter" data-target="200">0</span>+</h3>
+                    <p>Luxury Car Owners</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3><span class="counter" data-target="70">0</span>%</h3>
+                    <p>Time Saved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries Section with Fixed Images -->
+    <section class="countries">
+        <div class="container">
+            <h2 class="section-title">Browse <span class="highlight">Luxury</span> Scrapyards</h2>
+            <p class="section-subtitle">Find premium car parts across USA, Dubai, and UK</p>
+            <div class="countries-grid">
+                
+                <!-- 1. USA - Copart -->
+                <div class="country-card" data-country="USA">
+                    <div class="country-img-container">
+                        <img src="images/copart.png" alt="USA Copart Salvage Yards" class="country-img" onerror="this.src='https://placehold.co/600x400/1a1a2e/d4af37?text=USA+Copart'">
+                    </div>
+                    <div class="country-info">
+                        <h3><i class="fas fa-flag-usa"></i> USA Copart</h3>
+                        <p><i class="fas fa-warehouse"></i> Largest online vehicle auction</p>
+                        <p><i class="fas fa-car"></i> 200,000+ Luxury Vehicles</p>
+                        <button class="btn-country">Browse USA →</button>
+                    </div>
+                </div>
+
+                <!-- 2. UAE - Sharjah -->
+                <div class="country-card" data-country="Dubai">
+                    <div class="country-img-container">
+                        <img src="images/sharjah.jpg" alt="Sharjah Scrapyard Zone" class="country-img" onerror="this.src='https://placehold.co/600x400/1a1a2e/d4af37?text=Sharjah+Zone'">
+                    </div>
+                    <div class="country-info">
+                        <h3><i class="fas fa-city"></i> Sharjah Scrapyard Zone</h3>
+                        <p><i class="fas fa-warehouse"></i> Middle East's largest scrap zone</p>
+                        <p><i class="fas fa-car"></i> 100+ Luxury Scrapyards</p>
+                        <button class="btn-country">Browse UAE →</button>
+                    </div>
+                </div>
+
+                <!-- 3. UK - Breaker Yards -->
+                <div class="country-card" data-country="UK">
+                    <div class="country-img-container">
+                        <img src="images/uk.jpg" alt="UK Breaker Yards" class="country-img" onerror="this.src='https://placehold.co/600x400/1a1a2e/d4af37?text=UK+Breakers'">
+                    </div>
+                    <div class="country-info">
+                        <h3><i class="fas fa-flag-checkered"></i> UK Breaker Yards</h3>
+                        <p><i class="fas fa-warehouse"></i> Nationwide breaker network</p>
+                        <p><i class="fas fa-car"></i> European Luxury Specialists</p>
+                        <button class="btn-country">Browse UK →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Brands Showcase -->
+    <section class="brands-showcase">
+        <div class="container">
+            <h2 class="section-title">Premium <span class="highlight">Luxury Brands</span> We Source</h2>
+            <p class="section-subtitle">Find parts for the world's most prestigious vehicles</p>
+            <div class="brands-grid">
+                <div class="brand-card" data-brand="Mercedes">
+                    <i class="fas fa-car"></i>
+                    <h3>Mercedes-Benz</h3>
+                    <p>S-Class, G-Wagon, AMG, Maybach</p>
+                </div>
+                <div class="brand-card" data-brand="BMW">
+                    <i class="fas fa-car"></i>
+                    <h3>BMW</h3>
+                    <p>M-Series, 7 Series, X Series, Alpina</p>
+                </div>
+                <div class="brand-card" data-brand="Audi">
+                    <i class="fas fa-car"></i>
+                    <h3>Audi</h3>
+                    <p>RS Series, A8, R8, e-tron</p>
+                </div>
+                <div class="brand-card" data-brand="Bentley">
+                    <i class="fas fa-car"></i>
+                    <h3>Bentley</h3>
+                    <p>Continental GT, Flying Spur, Bentayga</p>
+                </div>
+                <div class="brand-card" data-brand="Rolls-Royce">
+                    <i class="fas fa-car"></i>
+                    <h3>Rolls-Royce</h3>
+                    <p>Phantom, Ghost, Cullinan, Wraith</p>
+                </div>
+                <div class="brand-card" data-brand="Ferrari">
+                    <i class="fas fa-car"></i>
+                    <h3>Ferrari</h3>
+                    <p>488, F8, SF90, Roma, 812</p>
+                </div>
+                <div class="brand-card" data-brand="Lamborghini">
+                    <i class="fas fa-car"></i>
+                    <h3>Lamborghini</h3>
+                    <p>Aventador, Huracan, Urus</p>
+                </div>
+                <div class="brand-card" data-brand="Porsche">
+                    <i class="fas fa-car"></i>
+                    <h3>Porsche</h3>
+                    <p>911, Cayenne, Panamera, Taycan</p>
+                </div>
+                <div class="brand-card" data-brand="Aston Martin">
+                    <i class="fas fa-car"></i>
+                    <h3>Aston Martin</h3>
+                    <p>DB11, Vantage, DBS, DBX</p>
+                </div>
+                <div class="brand-card" data-brand="Maserati">
+                    <i class="fas fa-car"></i>
+                    <h3>Maserati</h3>
+                    <p>Quattroporte, Ghibli, Levante, MC20</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose <span class="highlight">ScrapLux</span></h2>
+            <p class="section-subtitle">The premium platform for luxury car parts</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Only Luxury Brands</h3>
+                    <p>Specialized in Mercedes, BMW, Audi, Bentley, Rolls-Royce, Ferrari, and Lamborghini.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Network</h3>
+                    <p>Connect with scrapyards across USA, Dubai, and United Kingdom.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Rare Parts</h3>
+                    <p>Access to hard-to-find luxury car parts from specialized scrapyards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Fast Search</h3>
+                    <p>Find what you need in minutes, not days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Your Luxury Car Part?</h2>
+            <p>Search across our global network of premium scrapyards</p>
+            <div class="cta-buttons">
+                <a href="scrapyards.html" class="btn-primary-large">Explore Global Scrapyards</a>
+                <a href="parts.html" class="btn-outline-large">Search Luxury Parts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-gem"></i> ScrapLux</h3>
+                    <p>"Luxury Parts, Found Faster"</p>
+                    <p>Your global gateway to luxury and exotic car parts from the world's largest scrapyards.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Global Partners</h4>
+                    <ul>
+                        <li><i class="fas fa-flag-usa"></i> Copart (USA)</li>
+                        <li><i class="fas fa-flag-checkered"></i> UK Breakers Network (UK)</li>
+                        <li><i class="fas fa-city"></i> Sharjah Scrapyard Zone (UAE)</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Luxury Brands</h4>
+                    <ul>
+                        <li>Mercedes-Benz | BMW | Audi</li>
+                        <li>Rolls-Royce | Bentley</li>
+                        <li>Ferrari | Lamborghini | Porsche</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@scraplux.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bahrain (Global Shipping)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ScrapLux. All rights reserved. | Luxury Parts, Found Faster | Connecting Bahrain to Global Luxury Scrapyards</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

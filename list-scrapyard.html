@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Scrapyard | ScrapLux</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .list-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .list-form {
+            max-width: 800px;
+            margin: 60px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .submit-btn {
+            background: var(--secondary-color);
+            color: var(--dark);
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><i class="fas fa-gem"></i><span>Scrap<span class="lux">Lux</span></span></a><span class="tagline-nav">Luxury Parts, Found Faster</span></div>
+            <div class="nav-menu"><ul><li><a href="index.html">Home</a></li><li><a href="scrapyards.html">Scrapyards</a></li><li><a href="parts.html">Luxury Parts</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="nav-actions"><a href="list-scrapyard.html" class="btn-outline active">List Your Scrapyard</a><a href="contact.html" class="btn-primary">Get Started</a><div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div></div>
+        </div>
+    </nav>
+
+    <section class="list-header">
+        <div class="container"><h1>List Your Scrapyard</h1><p>Join the world's premier luxury parts network</p></div>
+    </section>
+
+    <div class="container">
+        <div class="list-form">
+            <h2 style="margin-bottom: 30px;">Partner With ScrapLux</h2>
+            <form id="listForm">
+                <div class="form-group"><label>Scrapyard Name</label><input type="text" placeholder="Enter your business name" required></div>
+                <div class="form-group"><label>Country</label><select><option>United States</option><option>United Arab Emirates</option><option>United Kingdom</option></select></div>
+                <div class="form-group"><label>Contact Person</label><input type="text" placeholder="Full name"></div>
+                <div class="form-group"><label>Email Address</label><input type="email" placeholder="business@email.com"></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1234567890"></div>
+                <div class="form-group"><label>Luxury Brands You Carry</label><textarea rows="3" placeholder="Mercedes-Benz, BMW, Rolls-Royce, Ferrari..."></textarea></div>
+                <button type="submit" class="submit-btn">Submit Application →</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; font-size: 12px; color: var(--gray);">We'll review your application and contact you within 48 hours.</p>
+        </div>
+    </div>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-section"><h3><i class="fas fa-gem"></i> ScrapLux</h3><p>"Luxury Parts, Found Faster"</p></div></div><div class="footer-bottom"><p>&copy; 2026 ScrapLux. All rights reserved.</p></div></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>

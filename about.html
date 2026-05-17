@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ScrapLux | Luxury Parts Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .about-content {
+            padding: 60px 0;
+        }
+        .mission-box {
+            background: var(--light);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .mission-box i {
+            font-size: 60px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .value-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html"><i class="fas fa-gem"></i><span>Scrap<span class="lux">Lux</span></span></a><span class="tagline-nav">Luxury Parts, Found Faster</span></div>
+            <div class="nav-menu"><ul><li><a href="index.html">Home</a></li><li><a href="scrapyards.html">Scrapyards</a></li><li><a href="parts.html">Luxury Parts</a></li><li><a href="about.html" class="active">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="nav-actions"><a href="list-scrapyard.html" class="btn-outline">List Your Scrapyard</a><a href="contact.html" class="btn-primary">Get Started</a><div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div></div>
+        </div>
+    </nav>
+
+    <section class="about-header">
+        <div class="container">
+            <h1>About ScrapLux</h1>
+            <p>Luxury Parts, Found Faster</p>
+        </div>
+    </section>
+
+    <div class="container about-content">
+        <div class="mission-box">
+            <i class="fas fa-gem"></i>
+            <h2 style="margin-bottom: 20px;">Our Mission</h2>
+            <p style="max-width: 700px; margin: 0 auto;">To simplify and revolutionize the way luxury car owners find premium spare parts by connecting them with the world's largest scrapyards in USA, UAE, and UK.</p>
+        </div>
+
+        <h2 style="text-align: center; margin-bottom: 30px;">Why Choose ScrapLux?</h2>
+        <div class="values-grid">
+            <div class="value-card"><i class="fas fa-crown" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i><h3>Only Luxury Brands</h3><p>Specialized in high-end vehicles only</p></div>
+            <div class="value-card"><i class="fas fa-globe" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i><h3>Global Network</h3><p>USA, UAE, and UK coverage</p></div>
+            <div class="value-card"><i class="fas fa-clock" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i><h3>Fast Search</h3><p>Find parts in minutes</p></div>
+            <div class="value-card"><i class="fas fa-handshake" style="font-size: 40px; color: var(--secondary-color); margin-bottom: 15px;"></i><h3>Trusted Partners</h3><p>Verified scrapyards only</p></div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center; padding: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); border-radius: var(--border-radius); color: white;">
+            <h3>Ready to find your luxury car part?</h3>
+            <a href="contact.html" class="btn-primary-large" style="display: inline-block; margin-top: 20px;">Contact Us Today</a>
+        </div>
+    </div>
+
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-section"><h3><i class="fas fa-gem"></i> ScrapLux</h3><p>"Luxury Parts, Found Faster"</p></div></div><div class="footer-bottom"><p>&copy; 2026 ScrapLux. All rights reserved.</p></div></div></footer>
+    <script src="script.js"></script>
+</body>
+</html>
